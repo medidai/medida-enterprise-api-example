@@ -20,7 +20,7 @@ def _parse_filename(response_headers: httpx.Headers) -> str | None:
 async def get_all_projects_csv(
     http_client: httpx.AsyncClient,
 ) -> None:
-    response = await http_client.get("/v1/projects/csv")
+    response = await http_client.get("/enterprise/v1/projects/csv")
     if response.is_error:
         raise RuntimeError(response.text)
 
@@ -33,7 +33,7 @@ async def get_project_csv_by_id(
     http_client: httpx.AsyncClient,
     project_id: UUID,
 ) -> None:
-    response = await http_client.get(f"/v1/projects/{project_id}/csv")
+    response = await http_client.get(f"/enterprise/v1/projects/{project_id}/csv")
     if response.is_error:
         raise RuntimeError(response.text)
 
@@ -46,7 +46,7 @@ async def get_project_photos_by_id(
     http_client: httpx.AsyncClient,
     project_id: UUID,
 ) -> None:
-    response = await http_client.get(f"/v1/projects/{project_id}/photos")
+    response = await http_client.get(f"/enterprise/v1/projects/{project_id}/photos")
     if response.is_error:
         raise RuntimeError(response.text)
 
